@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: monitoring-app
-        image: mulevenkatesh/monitoring-pipeline:tatest
+        image: mulevenkatesh/monitoring-pipeline:latest
         ports:
         - containerPort: 8080
         readinessProbe:
