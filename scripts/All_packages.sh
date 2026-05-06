@@ -84,6 +84,7 @@ echo "===docker vesrion==="
 docker --version
 echo "===kubernets vesrion==="
 kubectl version --client
+echo "====================================== INSTALL ALL PACKAGES ========================================"
 
 #To restart dockers:
 newgrp docker
