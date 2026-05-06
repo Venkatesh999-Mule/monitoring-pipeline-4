@@ -29,7 +29,7 @@ pipeline {
             steps{
                 sh 'echo "===PUSHING docker image to docker hub ===="'
                 withCredentials([usernamePassword(
-                    credentialsId: 'dockerhud_creds',
+                    credentialsId: 'dockerhud-creds',
                     usernameVariable: 'DOCKER_USER',
                     passwordVariable: 'DOCKER_PASS'
                 )]) 
