@@ -1,7 +1,7 @@
 pipeline {
     agent any 
 
-    enviroment{
+    environment {
         DOCKER_IMAGE = "mulevenkatesh/monitoring-pipeline"
         DOCKER_TAG   = "latest"
         KUBECONFIG   = "/var/lib/jenkins/.kube/config"
