@@ -25,14 +25,20 @@ pipeline {
             sh 'docker build -t ${DOCKER_IMAGE}:${DOCKER_TAG} .'
             }
         }
-        stage('4.PUSHING DOCKER IMAGE'){
-            steps{
-                sh 'echo "===PUSHING docker image to docker hub ===="'
+        stage('4. Docker Push') {
+            steps {
+                echo 'Pushing to DockerHub...'
                 withCredentials([usernamePassword(
-                    credentialsId: 'dockerhud-creds',
+                    credentialsId: 'dockerhub-creds',
                     usernameVariable: 'DOCKER_USER',
                     passwordVariable: 'DOCKER_PASS'
-                )]) 
+                )]) {
+                    sh '''
+                        echo "$DOCKER_PASS" | docker login \
+                            -u "$DOCKER_USER" --password-stdin
+                        docker push ${DOCKER_IMAGE}:${DOCKER_TAG}
+                    '''
+                }
             }
         }
         stage('5. DEPLOYMENT OF APP IN KUBERNETES'){
